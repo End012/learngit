@@ -1,0 +1,57 @@
+﻿1.下载并安装git
+
+2.配置git的环境变量
+①创建GIT_HOME,指向安装根路径C:\Program Files\Git
+②在path中引入，%GIT_HOME%\bin
+cmd或者git bash中使用git --version查看当前git版本，显示版本说明配置成功
+
+3.安装完成后，还需要最后一步设置，在命令行输入：
+git config --global user.name "Jason"
+git config --global user.email "kouzikaile@gmail.com"
+
+4.所以，创建一个版本库非常简单
+
+首先，选择一个合适的地方，创建一个空目录：
+mkdir learngit --创建新目录
+cd learngit --进入新目录
+pwd --显示目录
+
+第二步，通过git init命令把这个目录变成Git可以管理的仓库：
+git init
+
+第三步，添加文件并提交到仓库
+git add readme.txt
+
+git commit -m "add a new doc file readme.txt"
+
+5.创建远程仓库并关联本地仓库
+
+第一步：在本地的learngit仓库下运行命令：
+git remote add origin git@github.com:kuangbaokouzi/learngit.git
+
+第二步：把本地库的所有内容推送到远程库上
+git push -u origin master
+
+第三步：拉取远程仓库的内容到本地
+git pull origin master
+
+注意：如果远程仓库有不相关的内容，在拉取时需要添加一些选项
+git pull origin master --allow-unrelated-histories
+
+场景：将本地的分支删除，与远程分支失去联系
+
+进行关联根据命令行提示只需要执行以下命令即可
+git branch --set-upstream-to=origin/分支名 master
+
+获得远程有但本地没有的资源，可以通过克隆：
+git clone git@github.com:kuangbaokouzi/learngit.git
+
+6.生成SSH公钥，便于后续访问
+ssh-keygen
+
+在C:\Users\Administrator\.ssh自动生成三个文件：
+id_rsa
+id_rsa.pub
+known_hosts
+
+将id_rsa.pub的秘钥内容添加到github的settings中。
